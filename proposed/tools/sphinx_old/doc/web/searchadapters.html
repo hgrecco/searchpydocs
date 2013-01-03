@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Search Adapters &mdash; Python 3.4.0a0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/pydoctheme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '3.4.0a0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.4.0a0 documentation"
+          href="../../../../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="copyright" title="Copyright" href="../../../../copyright.html" />
+    <link rel="top" title="Python 3.4.0a0 documentation" href="../../../../index.html" />
+    <link rel="shortcut icon" type="image/png" href="../../../../_static/py.png" />
+    <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+    
+    
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><img src="../../../../_static/py.png" alt=""
+                 style="vertical-align: middle; margin-top: -1px"/></li>
+        <li><a href="http://www.python.org/">Python</a> &raquo;</li>
+        <li>
+          <a href="../../../../index.html">3.4.0a0 Documentation</a> &raquo;
+        </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="search-adapters">
+<span id="searchadapters"></span><h1>Search Adapters<a class="headerlink" href="#search-adapters" title="Permalink to this headline">¶</a></h1>
+<p>To create a custom search adapter you will need to subclass the
+<a class="reference internal" href="#sphinx.websupport.search.BaseSearch" title="sphinx.websupport.search.BaseSearch"><tt class="xref py py-class docutils literal"><span class="pre">BaseSearch</span></tt></a> class.  Then create an instance of the new class and pass
+that as the <cite>search</cite> keyword argument when you create the <a class="reference internal" href="api.html#sphinx.websupport.WebSupport" title="sphinx.websupport.WebSupport"><tt class="xref py py-class docutils literal"><span class="pre">WebSupport</span></tt></a>
+object:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">support</span> <span class="o">=</span> <span class="n">WebSupport</span><span class="p">(</span><span class="n">srcdir</span><span class="o">=</span><span class="n">srcdir</span><span class="p">,</span>
+                     <span class="n">builddir</span><span class="o">=</span><span class="n">builddir</span><span class="p">,</span>
+                     <span class="n">search</span><span class="o">=</span><span class="n">MySearch</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>For more information about creating a custom search adapter, please see the
+documentation of the <a class="reference internal" href="#sphinx.websupport.search.BaseSearch" title="sphinx.websupport.search.BaseSearch"><tt class="xref py py-class docutils literal"><span class="pre">BaseSearch</span></tt></a> class below.</p>
+<dl class="class">
+<dt id="sphinx.websupport.search.BaseSearch">
+<em class="property">class </em><tt class="descclassname">sphinx.websupport.search.</tt><tt class="descname">BaseSearch</tt><a class="headerlink" href="#sphinx.websupport.search.BaseSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines an interface for search adapters.</p>
+</dd></dl>
+
+<div class="section" id="basesearch-methods">
+<h2>BaseSearch Methods<a class="headerlink" href="#basesearch-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The following methods are defined in the BaseSearch class. Some methods do
+not need to be overridden, but some (<tt class="xref py py-meth docutils literal"><span class="pre">add_document()</span></tt> and
+<tt class="xref py py-meth docutils literal"><span class="pre">handle_query()</span></tt>) must be overridden in your subclass. For a
+working example, look at the built-in adapter for whoosh.</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Search Adapters</a><ul>
+<li><a class="reference internal" href="#basesearch-methods">BaseSearch Methods</a></li>
+</ul>
+</li>
+</ul>
+
+<h3>This Page</h3>
+<ul class="this-page-menu">
+  <li><a href="../../../../bugs.html">Report a Bug</a></li>
+  <li><a href="../../../../_sources/tools/sphinx_old/doc/web/searchadapters.txt"
+         rel="nofollow">Show Source</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><img src="../../../../_static/py.png" alt=""
+                 style="vertical-align: middle; margin-top: -1px"/></li>
+        <li><a href="http://www.python.org/">Python</a> &raquo;</li>
+        <li>
+          <a href="../../../../index.html">3.4.0a0 Documentation</a> &raquo;
+        </li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+    &copy; <a href="../../../../copyright.html">Copyright</a> 1990-2013, Python Software Foundation.
+    <br />
+    The Python Software Foundation is a non-profit corporation.
+    <a href="http://www.python.org/psf/donations/">Please donate.</a>
+    <br />
+    Last updated on Jan 03, 2013.
+    <a href="../../../../bugs.html">Found a bug</a>?
+    <br />
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+
+  </body>
+</html>

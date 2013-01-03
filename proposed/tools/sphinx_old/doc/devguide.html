@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sphinx Developer’s Guide &mdash; Python 3.4.0a0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/pydoctheme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '3.4.0a0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.4.0a0 documentation"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="copyright" title="Copyright" href="../../../copyright.html" />
+    <link rel="top" title="Python 3.4.0a0 documentation" href="../../../index.html" />
+    <link rel="shortcut icon" type="image/png" href="../../../_static/py.png" />
+    <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    
+    
+ 
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><img src="../../../_static/py.png" alt=""
+                 style="vertical-align: middle; margin-top: -1px"/></li>
+        <li><a href="http://www.python.org/">Python</a> &raquo;</li>
+        <li>
+          <a href="../../../index.html">3.4.0a0 Documentation</a> &raquo;
+        </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sphinx-developer-s-guide">
+<h1>Sphinx Developer&#8217;s Guide<a class="headerlink" href="#sphinx-developer-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="topic">
+<p class="topic-title first">Abstract</p>
+<p>This document describes the development process of Sphinx, a documentation
+system used by developers to document systems used by other developers to
+develop other systems that may also be documented using Sphinx.</p>
+</div>
+<p>The Sphinx source code is managed using <a class="reference external" href="http://mercurial.selenic.com/">Mercurial</a> and is hosted on
+<a class="reference external" href="http://bitbucket.org">BitBucket</a>.</p>
+<blockquote>
+<div>hg clone <a class="reference external" href="https://bitbucket.org/birkenfeld/sphinx">https://bitbucket.org/birkenfeld/sphinx</a></div></blockquote>
+<p class="rubric">Community</p>
+<dl class="docutils">
+<dt>sphinx-users &lt;<a class="reference external" href="mailto:sphinx-users&#37;&#52;&#48;googlegroups&#46;com">sphinx-users<span>&#64;</span>googlegroups<span>&#46;</span>com</a>&gt;</dt>
+<dd>Mailing list for user support.</dd>
+<dt>sphinx-dev &lt;<a class="reference external" href="mailto:sphinx-dev&#37;&#52;&#48;googlegroups&#46;com">sphinx-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a>&gt;</dt>
+<dd>Mailing list for development related discussions.</dd>
+<dt>#pocoo on irc.freenode.net</dt>
+<dd><p class="first">IRC channel for development questions and user support.</p>
+<p class="last">This channel is shared with other Pocoo projects.  Archived logs are
+available <a class="reference external" href="http://dev.pocoo.org/irclogs/">here</a>.</p>
+</dd>
+</dl>
+<div class="section" id="bug-reports-and-feature-requests">
+<h2>Bug Reports and Feature Requests<a class="headerlink" href="#bug-reports-and-feature-requests" title="Permalink to this headline">¶</a></h2>
+<p>If you have encountered a problem with Sphinx or have an idea for a new
+feature, please submit it to the <a class="reference external" href="http://bitbucket.org/birkenfeld/sphinx/issues">issue tracker</a> on BitBucket or discuss it
+on the sphinx-dev mailing list.</p>
+<p>For bug reports, please include the output produced during the build process
+and also the log file Sphinx creates after it encounters an un-handled
+exception.  The location of this file should be shown towards the end of the
+error message.</p>
+<p>Including or providing a link to the source files involved may help us fix the
+issue.  If possible, try to create a minimal project that produces the error
+and post that instead.</p>
+</div>
+<div class="section" id="contributing-to-sphinx">
+<h2>Contributing to Sphinx<a class="headerlink" href="#contributing-to-sphinx" title="Permalink to this headline">¶</a></h2>
+<p>The recommended way for new contributors to submit code to Sphinx is to fork
+the Mercurial repository on BitBucket and then submit a pull request after
+committing the changes.  The pull request will then need to be approved by one
+of the core developers before it is merged into the main repository.</p>
+<div class="section" id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<p>These are the basic steps needed to start developing on Sphinx.</p>
+<ol class="arabic">
+<li><p class="first">Create an account on BitBucket.</p>
+</li>
+<li><p class="first">Fork the main Sphinx repository (<a class="reference external" href="https://bitbucket.org/birkenfeld/sphinx">birkenfeld/sphinx</a>) using the BitBucket interface.</p>
+</li>
+<li><p class="first">Clone the forked repository to your machine.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">hg</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bitbucket</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">sphinx</span><span class="o">-</span><span class="n">fork</span>
+<span class="n">cd</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">fork</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Checkout the appropriate branch.</p>
+<p>For changes that should be included in the next minor release (namely bug
+fixes), use the <tt class="docutils literal"><span class="pre">stable</span></tt> branch.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">hg</span> <span class="n">checkout</span> <span class="n">stable</span>
+</pre></div>
+</div>
+<p>For new features or other substantial changes that should wait until the
+next major release, use the <tt class="docutils literal"><span class="pre">default</span></tt> branch.</p>
+</li>
+<li><p class="first">Setup your Python environment.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">virtualenv</span> <span class="o">~/</span><span class="n">sphinxenv</span>
+<span class="o">.</span> <span class="o">~/</span><span class="n">sphinxenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Hack, hack, hack.</p>
+<p>For tips on working with the code, see the <a class="reference internal" href="#coding-guide">Coding Guide</a>.</p>
+</li>
+<li><p class="first">Test, test, test.</p>
+<p>Run the unit tests:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">nose</span>
+<span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>Build the documentation and check the output for different builders:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">make</span> <span class="n">clean</span> <span class="n">html</span> <span class="n">text</span> <span class="n">man</span> <span class="n">info</span> <span class="n">latexpdf</span>
+</pre></div>
+</div>
+<p>Run the unit tests under different Python environments using
+<strong class="program">tox</strong>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">tox</span>
+<span class="n">tox</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>Add a new unit test in the <tt class="docutils literal"><span class="pre">tests</span></tt> directory if you can.</p>
+<p>For bug fixes, first add a test that fails without your changes and passes
+after they are applied.</p>
+</li>
+<li><p class="first">Commit your changes.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">hg</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&#39;Add useful new feature that does this.&#39;</span>
+</pre></div>
+</div>
+<p>BitBucket recognizes <a class="reference external" href="https://confluence.atlassian.com/display/BITBUCKET/Automatically+Resolving+Issues+when+Users+Push+Code">certain phrases</a> that can be used to automatically
+update the issue tracker.</p>
+<p>For example:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">hg</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&#39;Closes #42: Fix invalid markup in docstring of Foo.bar.&#39;</span>
+</pre></div>
+</div>
+<p>would close issue #42.</p>
+</li>
+<li><p class="first">Push changes to your forked repository on BitBucket.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span class="n">hg</span> <span class="n">push</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Submit a pull request from your repository to <tt class="docutils literal"><span class="pre">birkenfeld/sphinx</span></tt> using
+the BitBucket interface.</p>
+</li>
+<li><p class="first">Wait for a core developer to review your changes.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="core-developers">
+<h3>Core Developers<a class="headerlink" href="#core-developers" title="Permalink to this headline">¶</a></h3>
+<p>The core developers of Sphinx have write access to the main repository.  They
+can commit changes, accept/reject pull requests, and manage items on the issue
+tracker.</p>
+<p>You do not need to be a core developer or have write access to be involved in
+the development of Sphinx.  You can submit patches or create pull requests
+from forked repositories and have a core developer add the changes for you.</p>
+<p>The following are some general guidelines for core developers:</p>
+<ul class="simple">
+<li>Questionable or extensive changes should be submitted as a pull request
+instead of being committed directly to the main repository.  The pull
+request should be reviewed by another core developer before it is merged.</li>
+<li>Trivial changes can be committed directly but be sure to keep the repository
+in a good working state and that all tests pass before pushing your changes.</li>
+<li>When committing code written by someone else, please attribute the original
+author in the commit message and any relevant <tt class="file docutils literal"><span class="pre">CHANGES</span></tt> entry.</li>
+<li>Using Mercurial named branches other than <tt class="docutils literal"><span class="pre">default</span></tt> and <tt class="docutils literal"><span class="pre">stable</span></tt> is not
+encouraged.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="coding-guide">
+<h2>Coding Guide<a class="headerlink" href="#coding-guide" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Try to use the same code style as used in the rest of the project.  See the
+<a class="reference external" href="http://flask.pocoo.org/docs/styleguide/">Pocoo Styleguide</a> for more information.</li>
+<li>For non-trivial changes, please update the <tt class="file docutils literal"><span class="pre">CHANGES</span></tt> file.  If your
+changes alter existing behavior, please document this.</li>
+<li>New features should be documented.  Include examples and use cases where
+appropriate.  If possible, include a sample that is displayed in the
+generated output.</li>
+<li>When adding a new configuration variable, be sure to document it and update
+<tt class="file docutils literal"><span class="pre">sphinx/quickstart.py</span></tt>.</li>
+<li>Use the included <strong class="program">utils/check_sources.py</strong> script to check for
+common formatting issues (trailing whitespace, lengthy lines, etc).</li>
+<li>Add appropriate unit tests.</li>
+</ul>
+<div class="section" id="debugging-tips">
+<h3>Debugging Tips<a class="headerlink" href="#debugging-tips" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Delete the build cache before building documents if you make changes in the
+code by running the command <tt class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></tt> or using the
+<a class="reference internal" href="invocation.html#cmdoption-sphinx-build-E"><em class="xref std std-option">sphinx-build -E</em></a> option.</li>
+<li>Use the <a class="reference internal" href="invocation.html#cmdoption-sphinx-build-P"><em class="xref std std-option">sphinx-build -P</em></a> option to run Pdb on exceptions.</li>
+<li>Use <tt class="docutils literal"><span class="pre">node.pformat()</span></tt> and <tt class="docutils literal"><span class="pre">node.asdom().toxml()</span></tt> to generate a printable
+representation of the document structure.</li>
+<li>Set the configuration variable <a href="#id3"><span class="problematic" id="id4">:confval:`keep_warnings`</span></a> to True so warnings
+will be displayed in the generated output.</li>
+<li>Set the configuration variable <a href="#id5"><span class="problematic" id="id6">:confval:`nitpicky`</span></a> to True so that Sphinx
+will complain about references without a known target.</li>
+<li>Set the debugging options in the <a class="reference external" href="http://docutils.sourceforge.net/docs/user/config.html">Docutils configuration file</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sphinx Developer&#8217;s Guide</a><ul>
+<li><a class="reference internal" href="#bug-reports-and-feature-requests">Bug Reports and Feature Requests</a></li>
+<li><a class="reference internal" href="#contributing-to-sphinx">Contributing to Sphinx</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#core-developers">Core Developers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coding-guide">Coding Guide</a><ul>
+<li><a class="reference internal" href="#debugging-tips">Debugging Tips</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3>This Page</h3>
+<ul class="this-page-menu">
+  <li><a href="../../../bugs.html">Report a Bug</a></li>
+  <li><a href="../../../_sources/tools/sphinx_old/doc/devguide.txt"
+         rel="nofollow">Show Source</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><img src="../../../_static/py.png" alt=""
+                 style="vertical-align: middle; margin-top: -1px"/></li>
+        <li><a href="http://www.python.org/">Python</a> &raquo;</li>
+        <li>
+          <a href="../../../index.html">3.4.0a0 Documentation</a> &raquo;
+        </li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+    &copy; <a href="../../../copyright.html">Copyright</a> 1990-2013, Python Software Foundation.
+    <br />
+    The Python Software Foundation is a non-profit corporation.
+    <a href="http://www.python.org/psf/donations/">Please donate.</a>
+    <br />
+    Last updated on Jan 03, 2013.
+    <a href="../../../bugs.html">Found a bug</a>?
+    <br />
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+
+  </body>
+</html>
