@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Searching Python Docs. A comparison </title>
+<script type="text/javascript">
+function submitform()
+{
+  document.myform.action = "http://hgrecco.github.com/searchpydocs/proposed/search.html"
+  document.myform.target = "proposed";
+  document.myform.submit();
+  document.myform.action = "http://hgrecco.github.com/searchpydocs/current/search.html"
+  document.myform.target = "current";
+  document.myform.submit();
+}
+</script>
+<style>
+body { 
+ font-family: 'Lucida Grande',Arial,sans-serif;
+ font-size: 100%;
+ background-color: #000000; 
+ margin:15px 15px; 
+ padding:0px; 
+ text-align:center; 
+}
+form { color: white; }
+p { color: white; }
+</style>
+</head>
+<body>
+<p>
+<form name="myform" action="" target="" onsubmit="submitform()">
+Search the Python documentation
+<input type='text' name='q' />
+<input type="submit" value="Search">
+</form>
+</p>
+<p>
+Results: Current (Left) / Test (Right)
+</p>
+<body>
+</html>
